@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".scanListFrag">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <!-- TODO: Update blank fragment layout -->
+        <ListView android:id="@+id/new_devices"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stackFromBottom="true"
+
+            />
+
+        <TextView android:id="@+id/selected_device"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Devices"
+            android:background="#666"
+            android:textColor="#fff"
+            android:paddingLeft="5dp"/>
+
+        <Button android:id="@+id/button_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connect"
+            />
+    </LinearLayout>
+</FrameLayout>

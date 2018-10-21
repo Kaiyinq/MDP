@@ -1,0 +1,215 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.lohkaiying.mdpgrp13.controllerFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="monospace"
+                android:text="Robot Status"
+                android:textAllCaps="true"
+                android:textAppearance="@android:style/TextAppearance.Holo"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/robotStatus"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:padding="4dp"
+                android:ems="8"
+                android:hint="Status"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:focusable="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp">
+
+                <ImageButton
+                    android:id="@+id/leftBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/arrow_left" />
+
+                <ImageButton
+                    android:id="@+id/rightBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/upBtn"
+                    android:layout_toRightOf="@id/upBtn"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/arrow_right" />
+
+                <ImageButton
+                    android:id="@+id/downBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rightBtn"
+                    android:layout_toEndOf="@+id/leftBtn"
+                    android:layout_toRightOf="@+id/leftBtn"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/arrow_down" />
+
+                <ImageButton
+                    android:id="@+id/upBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/leftBtn"
+                    android:layout_toEndOf="@id/leftBtn"
+                    android:layout_toRightOf="@id/leftBtn"
+                    android:background="#FFFFFF"
+                    android:src="@drawable/arrow_up" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="23dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/beginExplorationBtn"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:background="#708090"
+                        android:text="Begin Exploration"
+                        android:textAllCaps="true"
+                        android:textColor="#FFFFFF" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/beginFastestPathBtn"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:padding="2dp"
+                        android:background="#708090"
+                        android:text="Begin Fastest Path"
+                        android:textAllCaps="true"
+                        android:textColor="#FFFFFF" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/stopwatchText1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00:00:00"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:paddingLeft="10dp"
+                        android:visibility="visible"
+                        android:textColor="#31b6e7" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/stopwatchText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="00:00:00"
+                        android:textColor="#31b6e7"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
+                    <Switch
+                        android:id="@+id/simpleSwitch"
+                        android:layout_below="@id/downBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textOff="No"
+                        android:textOn="Yes"/>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/resetBtn"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:background="#708090"
+                        android:padding="2dp"
+                        android:text="Reset"
+                        android:textAllCaps="true"
+                        android:layout_toRightOf="@+id/simpleSwitch"
+                        android:textColor="#FFFFFF" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>
