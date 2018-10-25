@@ -74,9 +74,7 @@ public class commFragment extends Fragment {
 
         editor.putString(Constants.SET_CMD1, c1);
         editor.putString(Constants.SET_CMD2, c2);
-
         editor.apply(); //commit()
-
 
     }
     @Override

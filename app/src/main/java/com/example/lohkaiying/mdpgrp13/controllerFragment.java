@@ -79,6 +79,11 @@ public class controllerFragment extends Fragment implements View.OnClickListener
         stopwatchText1 = (TextView) view.findViewById(R.id.stopwatchText1);
         stopwatchText2 = (TextView) view.findViewById(R.id.stopwatchText2);
 
+        String exStoredValue = sharedPref.getString("ExTime", "");
+        String fpStoredValue = sharedPref.getString("FpTime", "");
+        stopwatchText1.setText(exStoredValue);
+        stopwatchText2.setText(fpStoredValue);
+
         robotStatus = (TextView) view.findViewById(R.id.robotStatus);
 
         upBtn = view.findViewById(R.id.upBtn);
@@ -189,6 +194,10 @@ public class controllerFragment extends Fragment implements View.OnClickListener
 
                 stopwatchText1.setText("00:00:00");
                 stopwatchText2.setText("00:00:00");
+
+                editor.putString("ExTime", "00:00:00");
+                editor.putString("FpTime", "00:00:00");
+                editor.apply();
 
                 clearArrays();
                 updateRobotCoordsdir(robotCenter[0], robotCenter[1], robotFront[0], robotFront[1], "update");
@@ -376,10 +385,16 @@ public class controllerFragment extends Fragment implements View.OnClickListener
             Seconds = Seconds % 60;
             MilliSeconds = (int) ((UpdateTime % 1000)/10);
 
+            String time = String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + ":" + String.format("%02d", MilliSeconds);
+
             if (stopwatch1Clicked) {
-                stopwatchText1.setText(String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + ":" + String.format("%02d", MilliSeconds));
+                stopwatchText1.setText(time);
+                editor.putString("ExTime", time);
+                editor.apply();
             } else if (stopwatch2Clicked) {
-                stopwatchText2.setText(String.format("%02d", Minutes) + ":" + String.format("%02d", Seconds) + ":" + String.format("%02d", MilliSeconds));
+                stopwatchText2.setText(time);
+                editor.putString("FpTime", time);
+                editor.apply();
             }
 
             handler.postDelayed(this, 0);

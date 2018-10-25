@@ -155,7 +155,8 @@ public class MainActivity extends AppCompatActivity implements
                 MapCoorXY[i][j].setWaypoint(false);
             }
         }
-
+        editor.putString("ExTime", "00:00:00");
+        editor.putString("FpTime", "00:00:00");
         editor.putString("wpCoorX", "--");
         editor.putString("wpCoorY", "--");
         editor.putString("spCoorX", "--");
