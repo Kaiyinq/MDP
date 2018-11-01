@@ -80,8 +80,10 @@ public class MainActivity extends AppCompatActivity implements
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
 
+    public static boolean ExHistory = false;
+
     // TESTING
-    // and; 1,18,A FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 000000000400000001C800000000000700000000800000001F8000070000000002000000000 1,14;5,11;0,6;2,6;3,6;4,6;5,6;7,2;13,5;10,9;12,15;13,15;11,15;7,17;6,11;7,11;
+    // and; 13,1,W FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 01C00000000000000001F84000800100000003C20084000A000400088800F00000000000080 0,10,D;3,15,D;7,19,D;14,14,L;9,0,U;
     // ROBOT COOR: 1,18,A
     // EXPLOREDSTRING HEX: FFFFFFFFFFFFFFFFC1FF81FF01FE03FC07F80FF01FE03FC07F80FF81FF83FFFFFFFFFFFFFFFF
     // OBSTACLESTRING HEX: 000000080000020100101010103030202020200201000000400000000000000000000000000
@@ -289,13 +291,14 @@ public class MainActivity extends AppCompatActivity implements
         String arrowCoorXY[] = null;
         int arrowX[] = null;
         int arrowY[] = null;
-
-
+        char arrowSide[] = null;
 
         if (splitMDFString[0].contains("and")) {
 
             // Add mdfString to the history
-            history.populateListView("MDFString: " + splitMDFString[2] + " " + splitMDFString[3]);
+            if (ExHistory) {
+                history.populateListView("MDFString: " + splitMDFString[2] + " " + splitMDFString[3]+ " " + splitMDFString[4]);
+            }
 
             //ROBOT COORDINATES
             if (!splitMDFString[1].equals(" ")) {
@@ -357,13 +360,14 @@ public class MainActivity extends AppCompatActivity implements
             //OBSTACLES WITH ARROWS
             if (!splitMDFString[4].contains("null")) { // "13,1;15,1;19,1;"
                 int arrowPointer = 0;
-                System.out.println("A11: " + splitMDFString[4]);
+                //System.out.println("A11: " + splitMDFString[4]);
                 String newMDFString = splitMDFString[4].replace("\n", "").replace("\r", "");
-                System.out.println("A22: " + newMDFString);
+                //System.out.println("A22: " + newMDFString);
                 obsArrow = newMDFString.split(";"); // "13,1","15,1","19,1"
 
                 arrowX = new int[obsArrow.length];
                 arrowY = new int[obsArrow.length];
+                arrowSide = new char [obsArrow.length];
 
                 System.out.println(Arrays.toString(obsArrow));
 
@@ -376,18 +380,22 @@ public class MainActivity extends AppCompatActivity implements
 
                     arrowX[i] = Integer.parseInt(arrowCoorXY[0]);
                     arrowY[i] = Integer.parseInt(arrowCoorXY[1]);
+                    arrowSide[i] = arrowCoorXY[2].charAt(0);
+
                 }
 
 //                System.out.println("arrowX: " + Arrays.toString(arrowX));
 //                System.out.println("arrowY: " + Arrays.toString(arrowY));
+                System.out.println("arrowSide: " + Arrays.toString(arrowSide));
 
             } else {
                 arrowX = null;
                 arrowY = null;
+                arrowSide = null;
                 //Toast.makeText(this, "No Obstacle Arrow MDF String", Toast.LENGTH_SHORT).show();
             }
 
-            controllerFragment.updateArrays(exploredArray, obstacleArray, arrowX, arrowY);
+            controllerFragment.updateArrays(exploredArray, obstacleArray, arrowX, arrowY, arrowSide);
         }
     }
 

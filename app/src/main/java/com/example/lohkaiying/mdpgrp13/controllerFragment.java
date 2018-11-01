@@ -32,6 +32,7 @@ public class controllerFragment extends Fragment implements View.OnClickListener
     public static int[] exploredArray;
     public static int[] arrowArrayX;
     public static int[] arrowArrayY;
+    public static char[] arrowArraySide;
     public static boolean isMapUnexplored = false;
 
     private ImageButton upBtn;
@@ -142,6 +143,7 @@ public class controllerFragment extends Fragment implements View.OnClickListener
                         StartTime = SystemClock.uptimeMillis();
                         handler.postDelayed(runnable, 0);
                         stopwatch1Clicked = true;
+                        MainActivity.ExHistory = true;
                         history.populateListView("Exploration Path");
                     } else {
                         stopwatch1Clicked = false;
@@ -168,7 +170,7 @@ public class controllerFragment extends Fragment implements View.OnClickListener
                         StartTime = SystemClock.uptimeMillis();
                         handler.postDelayed(runnable, 0);
                         stopwatch2Clicked = true;
-                        history.populateListView("Fastest Path");
+                        //history.populateListView("Fastest Path");
                     }else {
                         stopwatch2Clicked = false;
                         //handler.removeCallbacks(runnable);
@@ -333,11 +335,12 @@ public class controllerFragment extends Fragment implements View.OnClickListener
         }
     }
 
-    public static void updateArrays(int[] expArray, int[] obsArray, int[] obsArrowX, int[] obsArrowY) {
+    public static void updateArrays(int[] expArray, int[] obsArray, int[] obsArrowX, int[] obsArrowY, char[] obsArrowSide) {
         exploredArray = expArray;
         obstacleArray = obsArray;
         arrowArrayX = obsArrowX;
         arrowArrayY = obsArrowY;
+        arrowArraySide = obsArrowSide;
 
         if (MainActivity.isAutoUpdateToggled) {
             maze.invalidate();

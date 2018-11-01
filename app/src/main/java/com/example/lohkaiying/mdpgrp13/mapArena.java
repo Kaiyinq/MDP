@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import static android.graphics.Color.rgb;
 import static com.example.lohkaiying.mdpgrp13.MainActivity.MapCoorXY;
+import static com.example.lohkaiying.mdpgrp13.controllerFragment.arrowArraySide;
 import static com.example.lohkaiying.mdpgrp13.controllerFragment.arrowArrayX;
 import static com.example.lohkaiying.mdpgrp13.controllerFragment.arrowArrayY;
 import static com.example.lohkaiying.mdpgrp13.controllerFragment.exploredArray;
@@ -204,16 +205,43 @@ public class mapArena extends View {
             }
 
             // DRAW OBS WITH ARROW
+            // https://www.flaticon.com/packs/arrows-kit
             int arrowPointer = 0;
             if (arrowArrayX != null && arrowArrayY != null) {
                 while (arrowPointer != arrowArrayX.length) {
-                    float leftArrX = (arrowArrayX[arrowPointer] * cellSize);
-                    float topArrY = (arrowArrayY[arrowPointer] * cellSize);
-                    //ystem.out.println("ArrX: " + arrowArrayX[arrowPointer] + " ArrY: " + arrowArrayY[arrowPointer]);
+                    float leftArrX = arrowArrayX[arrowPointer] * cellSize;
+                    float topArrY = (Constants.ROW - arrowArrayY[arrowPointer] - 1) * cellSize;
+                    char direction = arrowArraySide[arrowPointer];
+                    //System.out.println("ArrX: " + arrowArrayX[arrowPointer] + " ArrY: " + arrowArrayY[arrowPointer]);
+
                     // put arrow on the block
-                    Drawable myDrawable = getResources().getDrawable(R.drawable.obs_arrow);
-                    Bitmap arrowupBM = ((BitmapDrawable) myDrawable).getBitmap();
-                    canvas.drawBitmap(arrowupBM, leftArrX + 5, topArrY + 5, rosewhite);
+                    Drawable myDrawable =  getResources().getDrawable(R.drawable.obs_arrow);
+                    Bitmap arrowBM = ((BitmapDrawable) myDrawable).getBitmap();
+                    canvas.drawBitmap(arrowBM, leftArrX + 5, topArrY + 5, rosewhite);
+
+                    // point where is the block
+                    if (direction == 'U') {
+                        topArrY = (Constants.ROW - arrowArrayY[arrowPointer] - 2) * cellSize;
+                        Drawable myDrawable2 = getResources().getDrawable(R.drawable.obs_arrow_down);
+                        Bitmap arrowBMPointer = ((BitmapDrawable) myDrawable2).getBitmap();
+                        canvas.drawBitmap(arrowBMPointer, leftArrX + 5, topArrY + 5, red);
+                    } else if (direction == 'D') {
+                        topArrY = (Constants.ROW - arrowArrayY[arrowPointer]) * cellSize;
+                        Drawable myDrawable2 = getResources().getDrawable(R.drawable.obs_arrow_up);
+                        Bitmap arrowBMPointer = ((BitmapDrawable) myDrawable2).getBitmap();
+                        canvas.drawBitmap(arrowBMPointer, leftArrX + 5, topArrY + 5, red);
+                    } else if (direction == 'L') {
+                        leftArrX = (arrowArrayX[arrowPointer] - 1) * cellSize;
+                        Drawable myDrawable2 = getResources().getDrawable(R.drawable.obs_arrow_right);
+                        Bitmap arrowBMPointer = ((BitmapDrawable) myDrawable2).getBitmap();
+                        canvas.drawBitmap(arrowBMPointer, leftArrX + 5, topArrY + 5, red);
+                    } else if (direction == 'R') {
+                        leftArrX = (arrowArrayX[arrowPointer] + 1) * cellSize;
+                        Drawable myDrawable2 = getResources().getDrawable(R.drawable.obs_arrow_left);
+                        Bitmap arrowBMPointer = ((BitmapDrawable) myDrawable2).getBitmap();
+                        canvas.drawBitmap(arrowBMPointer, leftArrX + 5, topArrY + 5, red);
+                    }
+
                     arrowPointer++;
                 }
             }
