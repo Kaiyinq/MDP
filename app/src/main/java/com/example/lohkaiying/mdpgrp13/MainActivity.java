@@ -422,12 +422,12 @@ public class MainActivity extends AppCompatActivity implements
                             connectionStatus.setText("connected to "+ mConnectedDeviceName);
                             break;
                         case BluetoothService.STATE_CONNECTING:
-                            Toast.makeText(MainActivity.this, "connectting", Toast.LENGTH_SHORT).show();
-                            connectionStatus.setText("connectting");
+                            Toast.makeText(MainActivity.this, "connecting", Toast.LENGTH_SHORT).show();
+                            connectionStatus.setText("connecting");
                             break;
                         case BluetoothService.STATE_LISTEN:
                             Toast.makeText(MainActivity.this, "listening", Toast.LENGTH_SHORT).show();
-                            connectionStatus.setText("listening");
+                            connectionStatus.setText("Listening");
                             break;
                         case BluetoothService.STATE_NONE:
                             Toast.makeText(MainActivity.this, " not connected", Toast.LENGTH_SHORT).show();

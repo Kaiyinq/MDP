@@ -44,9 +44,7 @@ public class history extends AppCompatActivity {
 
 
     public static void renewListView(){
-historyList.clear();
-
-
+        historyList.clear();
     }
 
 
